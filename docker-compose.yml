@@ -1,0 +1,30 @@
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    runtime: nvidia
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    ports:
+      - "8000:8000"
+    ipc: host
+    command: >
+      --model Qwen/Qwen3.5-0.8B
+      --dtype auto
+      --max-model-len 4096
+      --gpu-memory-utilization 0.80
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 40s
+      timeout: 20s
+      retries: 3
+      start_period: 30s
+    restart: on-failure
