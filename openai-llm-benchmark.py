@@ -95,7 +95,7 @@ async def _run_once(args) -> None:
             await asyncio.gather(*tasks)
         toc = time.perf_counter()
 
-    _report(latencies, tokens, args.requests, toc - tic)
+    _report(latencies, tokens, args.requests, toc - tic, url=url, model_name=args.model, requests_count=args.requests)
     
     # Write responses to file if requested
     if args.capture_responses and responses:
@@ -112,7 +112,23 @@ def _write_responses_to_file(responses: List[Dict[str, Any]], filename: str) -> 
     print(f"\nResponses written to {filename}")
 
 # Report
-def _report(latencies: List[float], tokens: List[int], total_req: int, wall: float):
+METRICS_FILE = "metrics.json"
+def save_metrics(metrics: dict, path: str = METRICS_FILE):
+    # load existing data
+    if os.path.exists(path):
+        with open(path, "r") as f:
+            data = json.load(f)
+    else:
+        data = []
+
+    # append new run
+    data.append(metrics)
+
+    # write back
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2)
+
+def _report(latencies: List[float], tokens: List[int], total_req: int, wall: float, requests_count: int = 0, model_name: str = "unknown", url: str = "unknown") -> None:
     ok = len(latencies)
     print(f"\n✔ {ok}/{total_req} requests succeeded in {wall:.2f}s")
     if ok == 0:
@@ -122,10 +138,29 @@ def _report(latencies: List[float], tokens: List[int], total_req: int, wall: flo
     if any(tokens):
         tps = sum(tokens) / wall
         print(f"Tokens/s:       {tps:10.2f}")
-    print(f"Avg latency:    {statistics.mean(latencies):10.3f}s")
-    print(f"p50 latency:    {np.percentile(latencies, 50):10.3f}s")
-    print(f"p95 latency:    {np.percentile(latencies, 95):10.3f}s\n")
 
+    avg_latency = statistics.mean(latencies)
+    p50 = np.percentile(latencies, 50)
+    p95 = np.percentile(latencies, 95)
+
+    print(f"Avg latency:    {avg_latency:10.3f}s")
+    print(f"p50 latency:    {p50:10.3f}s")
+    print(f"p95 latency:    {p95:10.3f}s\n")
+
+    metrics = {
+        "timestamp": time.time(),
+        "model": model_name,
+        "url": url,
+        "requests_per_sec": rps,
+        "tokens_per_sec": tps,
+        "avg_latency_s": avg_latency,
+        "p50_latency_s": float(p50),
+        "p95_latency_s": float(p95),
+        "wall_time_s": wall,
+        "requests": requests_count
+    }
+
+    save_metrics(metrics)
 
 # CLI
 def _parse() -> argparse.Namespace:
