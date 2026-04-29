@@ -1,2 +1,5 @@
 .venv/
 .webui_secret_key
+.env
+responses.json
+responses_vllm.json
