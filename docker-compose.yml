@@ -3,14 +3,14 @@ services:
     image: vllm/vllm-openai:latest
     runtime: nvidia
     environment:
-      - HF_TOKEN=${HF_TOKEN}
+      - HF_TOKEN=hf_uYxDtzOLKzFLKqFUqgoJudjqZdkcoPeNmXcdpde 
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
     ports:
       - "8000:8000"
     ipc: host
     command: >
-      --model Qwen/Qwen3.5-0.8B
+      --model Qwen/Qwen3.5-2B
       --dtype auto
       --max-model-len 4096
       --gpu-memory-utilization 0.80
