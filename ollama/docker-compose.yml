@@ -1,15 +1,14 @@
 services:
   ollama:
     image: ollama/ollama:latest
-    container_name: ollama-qwen3.5-2b
+    container_name: ollama-llama3.1-8b
     volumes:
       - ollama_data:/root/.ollama
     ports:
       - "11438:11434"
     environment:
-      - OLLAMA_NUM_PARALLEL=${OLLAMA_NUM_PARALLEL}
+      - OLLAMA_NUM_PARALLEL=8
       - OLLAMA_CONTEXT_LENGTH=4096
-      - OLLAMA_GPU_MEMORY_FRACTION=0.85
     runtime: nvidia
     entrypoint: ["/bin/sh"]
     command:
@@ -19,8 +18,8 @@ services:
         ollama serve &
         sleep 15
 
-        echo 'Pulling qwen3.5:2b...';
-        ollama pull qwen3.5:2b
+        echo 'Pulling llama3.1-8b...';
+        ollama pull llama3.1:latest
 
         echo 'Ready.';
         wait

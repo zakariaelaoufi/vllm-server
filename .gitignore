@@ -3,3 +3,5 @@
 .env
 responses.json
 responses_vllm.json
+test.ipynb
+vvlm/models/

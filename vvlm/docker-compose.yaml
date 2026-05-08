@@ -1,7 +1,6 @@
 services:
   vllm:
     image: vllm/vllm-openai:latest
-    container_name: llama3.1_8b_vllm
     runtime: nvidia
     environment:
       - HF_TOKEN=1234567890abcdef1234567890abcdef12345678 
@@ -11,11 +10,10 @@ services:
       - "8000:8000"
     ipc: host
     command: >
-      --model nvidia/Llama-3.1-8B-Instruct-NVFP4
-      --kv-cache-dtype fp8
+      --model Qwen/Qwen3.5-2B
+      --dtype auto
       --max-model-len 4096
       --gpu-memory-utilization 0.80
-      --max-num-seqs 128
     deploy:
       resources:
         reservations:
