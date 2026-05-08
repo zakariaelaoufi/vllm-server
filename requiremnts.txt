@@ -3,4 +3,4 @@ dotenv
 pandas
 numpy
 matplotlib
-open-webui
+seaborn
