@@ -4,3 +4,6 @@ pandas
 numpy
 matplotlib
 seaborn
+datasets
+huggingface_hub
+pyyaml

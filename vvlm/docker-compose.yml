@@ -4,7 +4,7 @@ services:
     container_name: llama3.1_8b_vllm
     runtime: nvidia
     environment:
-      - HF_TOKEN=1234567890abcdef1234567890abcdef12345678 
+      - HF_TOKEN=${HF_TOKEN} 
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
     ports:
@@ -15,7 +15,7 @@ services:
       --kv-cache-dtype fp8
       --max-model-len 4096
       --gpu-memory-utilization 0.80
-      --max-num-seqs 128
+      --max-num-seqs 1024
     deploy:
       resources:
         reservations:

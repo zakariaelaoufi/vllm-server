@@ -3,7 +3,7 @@ services:
     image: vllm/vllm-openai:latest
     runtime: nvidia
     environment:
-      - HF_TOKEN=1234567890abcdef1234567890abcdef12345678 
+      - HF_TOKEN=${HF_TOKEN} 
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
     ports:

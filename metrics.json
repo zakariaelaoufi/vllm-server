@@ -297,5 +297,65 @@
     "wall_time_s": 63.104255099999136,
     "requests": 1000,
     "concurrent_requests": 1000
+  },
+  {
+    "timestamp": 1778253206.1136286,
+    "model": "nvidia/Llama-3.1-8B-Instruct-NVFP4",
+    "url": "http://localhost:8000/v1/chat/completions",
+    "requests_per_sec": 65.98881765372887,
+    "tokens_per_sec": 2507.5750708416967,
+    "avg_latency_s": 0.24017021919993203,
+    "p50_latency_s": 0.19353494999995746,
+    "p95_latency_s": 0.2090058450015931,
+    "wall_time_s": 15.154082700002618,
+    "requests": 1000
+  },
+  {
+    "timestamp": 1778253223.8066266,
+    "model": "nvidia/Llama-3.1-8B-Instruct-NVFP4",
+    "url": "http://localhost:8000/v1/chat/completions",
+    "requests_per_sec": 81.19251671306218,
+    "tokens_per_sec": 3085.3156350963623,
+    "avg_latency_s": 0.1946396892001103,
+    "p50_latency_s": 0.19148860000132117,
+    "p95_latency_s": 0.2096429099990928,
+    "wall_time_s": 12.316406000001734,
+    "requests": 1000
+  },
+  {
+    "timestamp": 1778253238.402795,
+    "model": "nvidia/Llama-3.1-8B-Instruct-NVFP4",
+    "url": "http://localhost:8000/v1/chat/completions",
+    "requests_per_sec": 81.03837254461625,
+    "tokens_per_sec": 3079.4581566954175,
+    "avg_latency_s": 0.19518908540004487,
+    "p50_latency_s": 0.19036764999873412,
+    "p95_latency_s": 0.2096001400021123,
+    "wall_time_s": 12.339833199999703,
+    "requests": 1000
+  },
+  {
+    "timestamp": 1778253252.3438945,
+    "model": "nvidia/Llama-3.1-8B-Instruct-NVFP4",
+    "url": "http://localhost:8000/v1/chat/completions",
+    "requests_per_sec": 82.8276402196453,
+    "tokens_per_sec": 3147.4503283465215,
+    "avg_latency_s": 0.19126009049999992,
+    "p50_latency_s": 0.19055740000112564,
+    "p95_latency_s": 0.19226818500283116,
+    "wall_time_s": 12.07326440000179,
+    "requests": 1000
+  },
+  {
+    "timestamp": 1778253266.669209,
+    "model": "nvidia/Llama-3.1-8B-Instruct-NVFP4",
+    "url": "http://localhost:8000/v1/chat/completions",
+    "requests_per_sec": 81.44208721997005,
+    "tokens_per_sec": 3094.799314358862,
+    "avg_latency_s": 0.19429897680002614,
+    "p50_latency_s": 0.19293054999798187,
+    "p95_latency_s": 0.2051636200008943,
+    "wall_time_s": 12.278663699999015,
+    "requests": 1000
   }
 ]
