@@ -1,17 +1,15 @@
 services:
   vllm:
     image: vllm/vllm-openai:latest
-    container_name: llama3.1_8b_vllm
+    container_name: qwen3.5_0.8b_vllm
     runtime: nvidia
-    environment:
-      - HF_TOKEN=${HF_TOKEN} 
     volumes:
       - ~/.cache/huggingface:/root/.cache/huggingface
     ports:
       - "8000:8000"
     ipc: host
     command: >
-      --model nvidia/Llama-3.1-8B-Instruct-NVFP4
+      --model Qwen/Qwen3.5-0.8B
       --kv-cache-dtype fp8
       --max-model-len 4096
       --gpu-memory-utilization 0.80
