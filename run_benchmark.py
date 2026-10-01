@@ -14,7 +14,7 @@ MAX_CONCURRENCY = 1024
 VLLM_COMPOSE = ROOT / "vLLM" / "docker-compose.yml"
 OLLAMA_COMPOSE = ROOT / "ollama" / "docker-compose.yml"
 
-BENCH_SCRIPT = ROOT / "benchmark_openai.py"
+BENCH_SCRIPT = ROOT / "benchmark_engines.py"
 
 RESULTS_DIR = ROOT / "results"
 RESULTS_DIR.mkdir(exist_ok=True)
