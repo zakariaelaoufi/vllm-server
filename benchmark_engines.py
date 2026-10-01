@@ -23,10 +23,7 @@ except ImportError:
 METRICS_FILE = "metrics_diff.json"
 
 
-# =========================
 # DATASET
-# =========================
-
 def load_ultrachat_prompts(
     split: str,
     num_samples: int,
@@ -64,10 +61,7 @@ def load_ultrachat_prompts(
     return prompts
 
 
-# =========================
 # REQUEST
-# =========================
-
 async def _chat_completion(
     client: httpx.AsyncClient,
     url: str,
@@ -111,10 +105,7 @@ async def _chat_completion(
         return None, None, None
 
 
-# =========================
 # REPORT
-# =========================
-
 def save_metrics(metrics: dict, path: str = METRICS_FILE):
 
     if os.path.exists(path):
@@ -202,10 +193,7 @@ def _report(
     save_metrics(metrics)
 
 
-# =========================
 # MAIN BENCH
-# =========================
-
 async def _run_once(args):
 
     url = f"{args.base_url.rstrip('/')}/v1/chat/completions"
@@ -323,11 +311,7 @@ async def _run_once(args):
             args.output_file,
         )
 
-
-# =========================
 # CLI
-# =========================
-
 def _parse():
 
     p = argparse.ArgumentParser()
