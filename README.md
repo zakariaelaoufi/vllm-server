@@ -3,7 +3,7 @@
 This repository is designed to benchmark and compare the performance of [vLLM](https://github.com/vllm-project/vllm) and [Ollama](https://github.com/ollama/ollama) at scale. 
 
 **Why Ultrachat500k?**
-Instead of sending the same question repeatedly—which would heavily trigger vLLM's caching mechanisms and artificially bias the results, we use diverse questions from the Ultrachat dataset. Testing against hundreds of thousands of unique prompts provides a realistic proxy for production workloads and properly assesses the true power of vLLM's PagedAttention mechanism without cache-induced bias. The benchmark progressively increases the number of concurrent requests in powers of two to measure scaling behavior.
+Instead of sending the same question repeatedly which would heavily trigger vLLM's caching mechanisms and artificially bias the results, we use diverse questions from the Ultrachat dataset. Testing against hundreds of thousands of unique prompts provides a realistic proxy for production workloads and properly assesses the true power of vLLM's PagedAttention mechanism without cache-induced bias. The benchmark progressively increases the number of concurrent requests in powers of two to measure scaling behavior.
 
 ## Project Structure
 
